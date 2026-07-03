@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Scissors, Droplets, Heart, ChevronDown } from 'lucide-react';
 
 const App = () => {
-  // Configurações de Contato
+  // Configurações de Contacto
   const zapNumber = "5521965537455";
   const zapLink = `https://wa.me/${zapNumber}?text=Olá! Gostaria de agendar um horário no Kekas Banho e Tosa.`;
   
@@ -30,13 +30,13 @@ const App = () => {
     { q: "Preciso agendar com antecedência?", a: "Recomendamos agendar com pelo menos 24h de antecedência pelo nosso WhatsApp para garantirmos o melhor horário para você." }
   ];
 
-  // Estado para controlar o Acordeão (FAQ)
+  // Estado para controlar o Acordéon (FAQ)
   const [openFaq, setOpenFaq] = useState(null);
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800 relative overflow-x-hidden">
       
-      {/* Botão Flutuante do WhatsApp (Reposicionado levemente no mobile) */}
+      {/* Botão Flutuante do WhatsApp */}
       <motion.a 
         href={zapLink}
         target="_blank"
@@ -51,7 +51,7 @@ const App = () => {
         </svg>
       </motion.a>
 
-      {/* Hero Section Focado em Mobile (Paddings menores, botão Full-width) */}
+      {/* Hero Section Focado em Mobile */}
       <header className="bg-white py-10 md:py-24 border-b border-slate-100">
         <div className="max-w-6xl mx-auto px-6 flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-12">
           
@@ -68,7 +68,6 @@ const App = () => {
             <p className="text-lg md:text-2xl mb-8 font-medium text-slate-600 leading-relaxed">
               O cuidado que o seu melhor amigo merece, com o carinho que ele ama.
             </p>
-            {/* Botão estilo Aplicativo: block w-full no celular, auto no desktop */}
             <motion.a 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -81,7 +80,7 @@ const App = () => {
             </motion.a>
           </motion.div>
 
-          {/* Lado Direito: Imagem reduzida no mobile para focar na conversão */}
+          {/* Lado Direito: Imagem reduzida no mobile */}
           <motion.div 
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -105,7 +104,6 @@ const App = () => {
           <div className="w-24 h-1 bg-orange-500 mx-auto mt-4 rounded-full"></div>
         </div>
 
-        {/* Gap reduzido no celular para leitura contínua */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
           {services.map((service, index) => (
             <motion.div 
@@ -114,7 +112,7 @@ const App = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              whileHover={{ y: -5 }}
+              whileHover={{ y: -8, scale: 1.02 }}
               className="bg-white p-8 rounded-3xl shadow-lg border border-slate-100 text-center"
             >
               <div className="bg-blue-100 text-blue-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -127,7 +125,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* Galeria de Focinhos */}
+      {/* Galeria de Focinhos (ANIMAÇÕES RESTAURADAS AQUI) */}
       <section className="py-16 md:py-20 px-4 md:px-6 bg-blue-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10">
@@ -136,7 +134,6 @@ const App = () => {
             <div className="w-24 h-1 bg-blue-500 mx-auto mt-4 rounded-full"></div>
           </div>
 
-          {/* Imagens mais coladas no celular estilo galeria de foto nativa */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {galleryImages.map((img, index) => (
               <motion.div
@@ -144,13 +141,14 @@ const App = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.3 }}
-                className="overflow-hidden rounded-2xl shadow-sm cursor-pointer"
+                transition={{ delay: index * 0.1, duration: 0.4 }}
+                whileHover={{ scale: 1.06, rotate: 1, zIndex: 10 }} // Animação interativa de aproximação e rotação
+                className="overflow-hidden rounded-2xl shadow-md cursor-pointer bg-white"
               >
                 <img 
                   src={img} 
                   alt={`Cachorrinho cliente do Kekas Banho e Tosa número ${index + 1}`} 
-                  className="w-full h-40 md:h-64 object-cover"
+                  className="w-full h-40 md:h-64 object-cover transition-opacity duration-300 hover:opacity-95"
                 />
               </motion.div>
             ))}
@@ -201,6 +199,7 @@ const App = () => {
             href={instaLink}
             target="_blank"
             rel="noopener noreferrer"
+            whileHover={{ scale: 1.15 }}
             whileTap={{ scale: 0.9 }}
             className="text-slate-400 flex flex-col items-center transition-colors active:text-pink-500"
           >
@@ -217,7 +216,7 @@ const App = () => {
             >
               <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+              <line x1="17.5" x2="17.51 y1="6.5" y2="6.5"/>
             </svg>
             <span className="mt-2 text-sm font-medium">Siga no Instagram</span>
           </motion.a>
